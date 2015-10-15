@@ -1,4 +1,4 @@
-package com.lorren.springtransation.service.impl;
+package com.lorren.service.impl;
 
 import static org.junit.Assert.fail;
 
@@ -12,8 +12,8 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.lorren.springtransation.entity.User;
-import com.lorren.springtransation.service.UserService;
+import com.lorren.entity.User;
+import com.lorren.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)  
 @ContextConfiguration(locations = {"classpath*:/applicationContext.xml"})  

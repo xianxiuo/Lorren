@@ -1,8 +1,8 @@
-package com.lorren.springtransation.service;
+package com.lorren.service;
 
 import java.util.List;
 
-import com.lorren.springtransation.entity.User;
+import com.lorren.entity.User;
 
 public interface UserService {
 

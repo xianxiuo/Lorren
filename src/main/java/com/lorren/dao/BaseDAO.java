@@ -1,4 +1,4 @@
-package com.lorren.springtransation.dao;
+package com.lorren.dao;
 
 import java.util.List;
 

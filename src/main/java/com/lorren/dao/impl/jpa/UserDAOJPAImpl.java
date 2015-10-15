@@ -1,10 +1,10 @@
-package com.lorren.springtransation.dao.impl.jpa;
+package com.lorren.dao.impl.jpa;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.lorren.springtransation.dao.UserDAO;
-import com.lorren.springtransation.entity.User;
+import com.lorren.dao.UserDAO;
+import com.lorren.entity.User;
 
 @Transactional
 @Repository("userDao")

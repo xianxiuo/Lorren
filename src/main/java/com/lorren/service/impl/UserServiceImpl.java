@@ -1,4 +1,4 @@
-package com.lorren.springtransation.service.impl;
+package com.lorren.service.impl;
 
 import java.util.List;
 
@@ -7,9 +7,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.lorren.springtransation.dao.UserDAO;
-import com.lorren.springtransation.entity.User;
-import com.lorren.springtransation.service.UserService;
+import com.lorren.dao.UserDAO;
+import com.lorren.entity.User;
+import com.lorren.service.UserService;
 
 @Transactional
 @Service("userService")

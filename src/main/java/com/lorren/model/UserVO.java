@@ -1,4 +1,4 @@
-package com.lorren.springtransation.model;
+package com.lorren.model;
 
 import java.io.Serializable;
 

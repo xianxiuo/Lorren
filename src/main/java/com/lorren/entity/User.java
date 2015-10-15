@@ -1,4 +1,4 @@
-package com.lorren.springtransation.entity;
+package com.lorren.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

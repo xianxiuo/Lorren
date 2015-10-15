@@ -1,4 +1,4 @@
-package com.lorren.springtransation.dao.impl.jpa;
+package com.lorren.dao.impl.jpa;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.lorren.springtransation.dao.BaseDAO;
+import com.lorren.dao.BaseDAO;
 
 @Transactional
 public class BaseDAOJPAImpl<T> implements BaseDAO<T> {
