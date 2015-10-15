@@ -12,7 +12,7 @@
            http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
     <context:annotation-config />
-    <context:component-scan base-package="com.argumentum.springtransation.*" />
+    <context:component-scan base-package="com.lorren.*" />
 
     <bean id="entityManagerFactory"
         class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
