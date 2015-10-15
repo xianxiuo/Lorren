@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Thu Oct 15 15:56:20 CST 2015:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-0150-6a7f-ec50-000008638d88 
-on database directory D:\Workspaces\Eclipse_CE\SpringTransaction\db_demo with class loader sun.misc.Launcher$AppClassLoader@e1641c0 
+Thu Oct 15 16:12:20 CST 2015:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.1 - (1616546): instance a816c00e-0150-6a8e-9471-0000085d1128 
+on database directory D:\Workspaces\Eclipse_CE\SpringTransaction\db_lorren with class loader sun.misc.Launcher$AppClassLoader@7d05e560 
 Loaded from file:/D:/Temp/.m2/org/apache/derby/derby/10.11.1.1/derby-10.11.1.1.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.7.0_80-b15
