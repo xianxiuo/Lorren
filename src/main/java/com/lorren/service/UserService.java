@@ -9,7 +9,5 @@ public interface UserService {
     List<User> getAllUsers();
 
     User createUser(User user);
-    
-    void execute(String sql);
 
 }

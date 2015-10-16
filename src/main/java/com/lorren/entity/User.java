@@ -9,6 +9,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.QueryHint;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import org.eclipse.persistence.config.HintValues;
 import org.eclipse.persistence.config.QueryHints;
@@ -18,14 +23,18 @@ import org.eclipse.persistence.config.QueryHints;
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u", hints = @QueryHint(name = QueryHints.REFRESH, value = HintValues.TRUE))
 })
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlRootElement(name = "user")
 public class User {
 
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @XmlAttribute(name = "id")
     private Long id;
 
     @Column(name = "NAME")
+    @XmlElement(name = "name")
     private String name;
 
     public Long getId() {

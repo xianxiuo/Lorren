@@ -25,9 +25,4 @@ public class UserServiceImpl implements UserService {
     public User createUser(User user) {
         return this.userDao.merge(user);
     }
-    
-    public void execute(String sql) {
-        this.userDao.execute(sql);
-    }
-
 }

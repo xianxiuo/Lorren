@@ -1,0 +1,29 @@
+.main_div {
+	width: 1000px;
+	margin: 0 auto;
+}
+.stack_div {
+	width: 250px;
+	float: left;
+}
+.stack_cell_div {
+	width: 238px;
+	border-color: #cccccc;
+	border-width: 1px;
+	border-style: solid;
+	margin: 10px 5px 10px 5px;   
+}
+.stack_cell_div img {
+	width: 228px;
+	margin: 5px;
+}
+.go_to_top {
+	background-color: #BBBBBB;
+	position: fixed;
+	float: right;
+	bottom: 0px;
+	height: 30px;
+	width: 100px;
+	margin-left: -100px;
+	cursor: pointer;
+}

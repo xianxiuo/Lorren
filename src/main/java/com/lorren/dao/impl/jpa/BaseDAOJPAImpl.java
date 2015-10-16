@@ -26,10 +26,6 @@ public class BaseDAOJPAImpl<T> implements BaseDAO<T> {
     public void remove(T entity) {
         manager.remove(entity);
     }
-    
-    public void execute(String sql) {
-        manager.createNativeQuery(sql);
-    }
 
     @Transactional(readOnly = true)
     public T find(long id) {

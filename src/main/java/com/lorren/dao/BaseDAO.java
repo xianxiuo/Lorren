@@ -11,7 +11,5 @@ public interface BaseDAO<T> {
     T find(long id);
 
     List<T> findAll();
-    
-    void execute(String sql);
 
 }

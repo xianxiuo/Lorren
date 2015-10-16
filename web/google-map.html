@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<title>Info windows</title>
+		<link href="css/reset.css" rel="stylesheet">
+		<link href="css/default.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="main-div">
+			<div id="pop-div">
+				<div id="head-div">
+					<a id="head-brand">Banner</a>
+					<a  class="btn_close">×</a>
+				</div>
+				<div id="map-div">
+					<div id="info-div">
+						<div class="info_main">
+							<a class="info_show" ><c id="stores-city"></c> Has <b id="stores-count" style="color: red;"></b> Stores</a>
+							<a class="sort_city" >Change City</a>
+						</div>
+						<ul id="info_show_detail">
+						</ul>
+					</div>
+					<div id="map-canvas"></div>
+					<div style="clear: both;"></div>
+				</div>
+			</div>
+		</div>
+		<script src="plug-in/jquery/jquery.js"></script>
+		<script src="data/stores.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+		<script>
+			var datas = stores.storeLocations.storeLocationList;
+			$('#stores-city').html('New York');
+			$('#stores-count').html(datas.length);
+			function initialize() {
+				var myLatlng = new google.maps.LatLng(40.7143528,
+						-74.00597309999999);
+				var mapOptions = {
+					zoom : 9,
+					zoomControl: true,
+					zoomControlOptions: {
+						style: google.maps.ZoomControlStyle.LARGE
+					},
+					center : myLatlng,
+					mapTypeId : google.maps.MapTypeId.ROADMAP
+				}
+
+				var map = new google.maps.Map(
+						document.getElementById('map-canvas'), mapOptions);
+
+				var infowindows = new Array();
+
+				$.each(datas, function(i, item) {
+				
+					var liObj = $('<li>'
+							+ '<b style="color: red;">' + item.storeName + '</b>'
+							+ '<a>' + item.storeAddress.addressLine1
+								+ ' ' + item.storeAddress.addressLine2
+								+ ', ' + item.storeAddress.postalCode
+							+ '</a>'
+							+ '<a>' + item.storeAddress.cityName
+									+ ', ' + item.storeAddress.countryCode
+							+ '</a>'
+						+ '</li>');
+				
+					$('ul#info_show_detail').append(liObj);
+
+					var contentString = '<div id="content">'
+						+ '<div id="image-div">'
+							+ '<img style="width: 66px;" src="data/1305061223268263.jpg" alt="' + item.storeName + '">'
+						+ '</div>'
+						+ '<div id="content-div">'
+						+ '<b>' + item.storeName + '</b>'
+						+ '<a>Address: ' + item.storeAddress.addressLine1
+								+ ' ' + item.storeAddress.addressLine2
+								+ ', ' + item.storeAddress.cityName
+								+ ', ' + item.storeAddress.countryCode
+								+ ', ' + item.storeAddress.postalCode
+						+ '</a>'
+						+ '<a>Phone: ' + item.storeAddress.phoneNumber
+						+ '</a>'
+						+ '</div>'
+						+ '<div style="clear: both;"></div>'
+						+ '</div>';
+
+					var marker = new google.maps.Marker({
+						position: new google.maps.LatLng(item.latitude,
+								item.longitude),
+						map: map,
+						title: "Title: " + item.storeName,
+						icon: 'data/change_city_icon_03.png'
+					});
+
+					var infowindow = new google.maps.InfoWindow({
+						content: contentString,
+						marker: marker
+					});
+					
+					infowindows.push(infowindow);
+					
+					google.maps.event.addListener(infowindow, 'closeclick', function() {
+						infowindow.marker.setIcon('data/change_city_icon_03.png');
+					});
+					
+					google.maps.event.addListener(marker, 'click', function() {
+						$.each(infowindows, function(i, item) {
+							item.close();
+							item.marker.setIcon('data/change_city_icon_03.png');
+						});
+						marker.setIcon('data/change_city_icon_05.png');
+						infowindow.open(map, marker);
+					});
+					
+					liObj.click(function(){
+						$.each(infowindows, function(i, item) {
+							item.close();
+							item.marker.setIcon('data/change_city_icon_03.png');
+						});
+						marker.setIcon('data/change_city_icon_05.png');
+						infowindow.open(map, marker);
+					});
+					
+				});
+			}
+			google.maps.event.addDomListener(window, 'load', initialize);
+		</script>
+	</body>
+</html>

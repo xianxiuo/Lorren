@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Hello</title>
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
+		<script src="data/data.js"></script>
+	</head>
+	<body>
+		<div id="main-div" class="main_div"></div>
+	</body>
+	<script src="plug-in/jquery/jquery.js"></script>
+	<script src="plug-in/backbone/underscore.js"></script>
+	<script src="plug-in/backbone/backbone.js"></script>
+	<script type="text/template" id="stack-div-template" >
+		<div id="stack-div-1" class="stack_div"></div>
+		<div id="stack-div-2" class="stack_div"></div>
+		<div id="stack-div-3" class="stack_div"></div>
+		<div id="stack-div-4" class="stack_div"></div>
+		<div id="goto-top" class="go_to_top">
+			<a>GO TO TOP</a>
+		</div>
+	</script>
+	<script type="text/template" id="stack-div-cell-template" >
+		<img src="data/<%= image %>" alt="<%= image %>" /><br/>
+		<span><%= brand %></span><br/>
+		<span><%= style %></span><br/>
+		<span><%= price %></span><br/>
+	</script>
+	<script src="js/index1.js"></script>
+</html>

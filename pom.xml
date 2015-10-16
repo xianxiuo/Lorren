@@ -1,25 +1,67 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.springtransaction</groupId>
-    <artifactId>SpringTransaction</artifactId>
+    <groupId>com.lorren</groupId>
+    <artifactId>Lorren</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>SpringTransaction</name>
-    <description>SpringTransaction</description>
+    <name>Lorren</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.version>3.0.5.RELEASE</spring.version>
+        <spring.version>4.2.2.RELEASE</spring.version>
+        <resteasy.version>3.0.13.Final</resteasy.version>
     </properties>
 
     <dependencies>
-
+    
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>jsr250-api</artifactId>
             <version>1.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        
+<!-- ================== RestEasy ================== -->
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-servlet-initializer</artifactId>
+            <version>${resteasy.version}</version>
+        </dependency> 
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxrs</artifactId>
+            <version>${resteasy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-spring</artifactId>
+            <version>${resteasy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson2-provider</artifactId>
+            <version>${resteasy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jaxb-provider</artifactId>
+            <version>${resteasy.version}</version>
+        </dependency>
+<!-- ================== Spring ================== -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
@@ -45,13 +87,12 @@
             <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
             <version>${spring.version}</version>
         </dependency>
-
+<!-- ================== Eclipse Link ================== -->
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>javax.persistence</artifactId>
@@ -72,7 +113,7 @@
             <artifactId>org.eclipse.persistence.antlr</artifactId>
             <version>2.3.0</version>
         </dependency>
-
+<!-- ================== Derby ================== -->
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
@@ -83,13 +124,19 @@
             <artifactId>derbytools</artifactId>
             <version>10.11.1.1</version>
         </dependency>
-
+<!-- ================== json ================== -->
         <dependency>
             <groupId>net.sf.json-lib</groupId>
             <artifactId>json-lib</artifactId>
             <version>2.2.3</version>
         </dependency>
-
+<!-- ================== Junit ================== -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
     </dependencies>
 
+    <description>Lorren</description>
 </project>
