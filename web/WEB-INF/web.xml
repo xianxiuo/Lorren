@@ -6,6 +6,13 @@
 
     <display-name>Lorren</display-name>
 
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:*-spring.xml
+        </param-value>
+    </context-param>
+
     <listener>
         <listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
     </listener>
@@ -13,12 +20,6 @@
     <listener>
         <listener-class>org.jboss.resteasy.plugins.spring.SpringContextLoaderListener</listener-class>
     </listener>
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>  
-            classpath:*-spring.xml  
-        </param-value>
-    </context-param>
 
     <servlet>
         <servlet-name>Resteasy</servlet-name>
