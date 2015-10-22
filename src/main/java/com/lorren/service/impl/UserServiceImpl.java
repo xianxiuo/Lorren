@@ -19,10 +19,10 @@ public class UserServiceImpl implements UserService {
     private UserDAO userDao;
 
     public List<User> getAllUsers() {
-        return this.userDao.findAll();
+        return this.userDao.getAll();
     }
 
     public User createUser(User user) {
-        return this.userDao.merge(user);
+        return null;
     }
 }

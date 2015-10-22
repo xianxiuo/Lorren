@@ -1,41 +1,25 @@
 package com.lorren.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.QueryHint;
-import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.eclipse.persistence.config.HintValues;
-import org.eclipse.persistence.config.QueryHints;
-
-@Entity
-@Table(name = "TB_USER")
-@NamedQueries({
-    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u", hints = @QueryHint(name = QueryHints.REFRESH, value = HintValues.TRUE))
-})
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlRootElement(name = "user")
 public class User {
 
-    @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @XmlAttribute(name = "id")
     private Long id;
-
-    @Column(name = "NAME")
     @XmlElement(name = "name")
     private String name;
+    @XmlElement(name = "username")
+    private String username;
+    @XmlElement(name = "password")
+    private String password;
+    @XmlElement(name = "token")
+    private String token;
 
     public Long getId() {
         return id;
@@ -49,7 +33,25 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public String getToken() {
+        return token;
+    }
+    public void setToken(String token) {
+        this.token = token;
+    }
+    
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
@@ -57,6 +59,12 @@ public class User {
         builder.append(id);
         builder.append(", name=");
         builder.append(name);
+        builder.append(", username=");
+        builder.append(username);
+        builder.append(", password=");
+        builder.append(password);
+        builder.append(", token=");
+        builder.append(token);
         builder.append("]");
         return builder.toString();
     }

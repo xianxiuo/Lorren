@@ -14,35 +14,13 @@
     <context:annotation-config />
     <context:component-scan base-package="com.lorren.*" />
 
-<!--     <bean id="common.propertyConfigurer" -->
-<!--         class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> -->
-<!--         <property name="ignoreResourceNotFound" value="true" /> -->
-<!--         <property name="ignoreUnresolvablePlaceholders" value="true" /> -->
-<!--         <property name="fileEncoding" value="UTF-8" /> -->
-<!--         <property name="locations"> -->
-<!--             <list> -->
-<!--                 <value>classpath:*-spring.properties</value> -->
-<!--             </list> -->
-<!--         </property> -->
-<!--     </bean> -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
     
-<!--     <bean id="resteasy.deployment" class="org.jboss.resteasy.spi.ResteasyDeployment" init-method="start" destroy-method="stop"> -->
-<!--         <property name="asyncJobServiceEnabled" value="true"/> -->
-<!--         <property name="mediaTypeMappings"> -->
-<!--             <map> -->
-<!--                 <entry key="json" value="application/json" /> -->
-<!--                 <entry key="xml" value="application/xml" /> -->
-<!--             </map> -->
-<!--         </property> -->
-<!--     </bean> -->
-
-    <bean id="entityManagerFactory"
-        class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
-        <property name="persistenceUnitName" value="db_lorren" />
+    <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.lorren.mapper.UserMapper" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
-    <bean id="txManger" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory" />
-    </bean>
-    <tx:annotation-driven transaction-manager="txManger" />
 
 </beans>

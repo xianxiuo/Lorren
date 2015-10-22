@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+                           http://www.springframework.org/schema/jdbc   
+                           http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd ">
+
+    <bean id="common.propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreResourceNotFound" value="true" />
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+        <property name="fileEncoding" value="UTF-8" />
+        <property name="locations">
+            <list>
+                <value>classpath:db-spring.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close" abstract="false" scope="singleton" lazy-init="false">
+        <property name="driverClass" value="${db.driver}" />
+        <property name="jdbcUrl" value="${db.url}" />
+        <property name="checkoutTimeout" value="30000" />
+        <property name="maxIdleTime" value="120" />
+        <property name="maxPoolSize" value="10" />
+        <property name="minPoolSize" value="1" />
+        <property name="initialPoolSize" value="1" />
+        <property name="maxStatements" value="0" />
+        <property name="maxStatementsPerConnection" value="0" />
+        <property name="idleConnectionTestPeriod" value="30" />
+    </bean>
+    
+    <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS" enabled="${db.initializedatabase}">  
+        <jdbc:script encoding="utf-8" location="/WEB-INF/classes/db-init.sql"/>
+    </jdbc:initialize-database>
+
+</beans>
