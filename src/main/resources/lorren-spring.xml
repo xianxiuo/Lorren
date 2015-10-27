@@ -22,5 +22,10 @@
         <property name="mapperInterface" value="com.lorren.mapper.UserMapper" />
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
+    
+    <bean id="accountMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.lorren.mapper.AccountMapper" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
 
 </beans>

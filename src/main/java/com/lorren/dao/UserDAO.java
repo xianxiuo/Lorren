@@ -8,6 +8,10 @@ public interface UserDAO {
     
     List<User> getAll();
 
-    User getUserById(User user);
+    User getById(Long id);
+    
+    long insert(User user);
+    
+    long update(User user);
 
 }

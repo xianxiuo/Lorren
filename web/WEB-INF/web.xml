@@ -12,6 +12,10 @@
             classpath:*-spring.xml
         </param-value>
     </context-param>
+    <context-param>
+        <param-name>resteasy.servlet.mapping.prefix</param-name>
+        <param-value>/rs</param-value>
+    </context-param>
 
     <listener>
         <listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
@@ -24,30 +28,12 @@
     <servlet>
         <servlet-name>Resteasy</servlet-name>
         <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
-        <context-param>
-            <param-name>resteasy.servlet.mapping.prefix</param-name>
-            <param-value>/rs</param-value>
-        </context-param>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>Resteasy</servlet-name>
         <url-pattern>/rs/*</url-pattern>
     </servlet-mapping>
-
-<!--     <servlet> -->
-<!--         <servlet-name>Spring</servlet-name> -->
-<!--         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> -->
-<!--         <init-param> -->
-<!--             <param-name>contextConfigLocation</param-name> -->
-<!--             <param-value>classpath:*-servlet.xml</param-value> -->
-<!--         </init-param> -->
-<!--     </servlet> -->
-
-<!--     <servlet-mapping> -->
-<!--         <servlet-name>Spring</servlet-name> -->
-<!--         <url-pattern>/*</url-pattern> -->
-<!--     </servlet-mapping> -->
 
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>

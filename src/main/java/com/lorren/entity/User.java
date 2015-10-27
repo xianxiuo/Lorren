@@ -1,70 +1,91 @@
 package com.lorren.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlRootElement(name = "user")
-public class User {
+public class User extends Base {
 
-    @XmlAttribute(name = "id")
-    private Long id;
     @XmlElement(name = "name")
     private String name;
-    @XmlElement(name = "username")
-    private String username;
-    @XmlElement(name = "password")
-    private String password;
-    @XmlElement(name = "token")
-    private String token;
-
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @XmlElement(name = "email")
+    private String email;
+    @XmlElement(name = "address")
+    private String address;
+    @XmlElement(name = "phone")
+    private String phone;
+    @XmlElement(name = "enabled")
+    private Boolean enabled;
+    @XmlElementRef(type = Account.class, name = "accounts")
+    private List<Account> accounts = new ArrayList<>();
+    
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
     }
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
-    public String getPassword() {
-        return password;
+    public String getAddress() {
+        return address;
     }
-    public void setPassword(String password) {
-        this.password = password;
+    public void setAddress(String address) {
+        this.address = address;
     }
-    public String getToken() {
-        return token;
+    public String getPhone() {
+        return phone;
     }
-    public void setToken(String token) {
-        this.token = token;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+    public Boolean getEnabled() {
+        return enabled;
+    }
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
     }
     
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("User [id=");
-        builder.append(id);
-        builder.append(", name=");
+        builder.append("User [name=");
         builder.append(name);
-        builder.append(", username=");
-        builder.append(username);
-        builder.append(", password=");
-        builder.append(password);
-        builder.append(", token=");
-        builder.append(token);
+        builder.append(", email=");
+        builder.append(email);
+        builder.append(", address=");
+        builder.append(address);
+        builder.append(", phone=");
+        builder.append(phone);
+        builder.append(", enabled=");
+        builder.append(enabled);
+        builder.append(", accounts=");
+        builder.append(accounts);
+        builder.append(", id=");
+        builder.append(id);
+        builder.append(", createtime=");
+        builder.append(createtime);
+        builder.append(", updatetime=");
+        builder.append(updatetime);
+        builder.append(", creator=");
+        builder.append(creator);
         builder.append("]");
         return builder.toString();
     }
