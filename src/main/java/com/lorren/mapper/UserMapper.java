@@ -2,20 +2,23 @@ package com.lorren.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.CacheNamespace;
+import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.SelectProvider;
 
 import com.lorren.entity.User;
+import com.lorren.mapper.sql.UserSqlBuilder;
 
+@CacheNamespace(size = 512)
 public interface UserMapper {
 
-    @Select("select * from tb_user where id = #{id}")
+    @SelectProvider(type = UserSqlBuilder.class, method = "selectOneByID")
+    @Options(flushCache = true, timeout = 10000)
     @Results({
         @Result(property = "id", column = "id"),
         @Result(property = "createtime", column = "createtime"),
@@ -29,7 +32,8 @@ public interface UserMapper {
         @Result(property = "accounts", column = "id", javaType = List.class, many = @Many(select = "com.lorren.mapper.AccountMapper.getAccountsByUserID") ) })
     User getUserByID(@Param("id") Long id);
 
-    @Select("select * from tb_user")
+    @SelectProvider(type = UserSqlBuilder.class, method = "selectAll")
+    @Options(flushCache = true, timeout = 10000)
     @Results({
         @Result(property = "id", column = "id"),
         @Result(property = "createtime", column = "createtime"),
@@ -43,15 +47,8 @@ public interface UserMapper {
         @Result(property = "accounts", column = "id", javaType = List.class, many = @Many(select = "com.lorren.mapper.AccountMapper.getAccountsByUserID") ) })
     List<User> getUserAll();
 
-    @Insert({
-        "insert into app.tb_user( ",
-            "name, email, address, phone, enabled, createtime, updatetime, creator ",
-        ") values( ",
-            "#{name}, #{email}, #{address}, #{phone}, #{enabled}, #{createtime}, #{updatetime}, #{creator} ",
-        ")"})
-//    parameterType="EStudent" useGeneratedKeys="true" keyProperty="id"
-//    @Options(useGeneratedKeys = true, keyProperty = "id")
-    @SelectKey(before = false, keyProperty = "id", resultType = Long.class, statement = {"select LAST_INSERT_ID()"})
-    long insertUser(User user);
+    @InsertProvider(type = UserSqlBuilder.class, method = "insert")
+    @Options(flushCache = true, timeout = 20000, keyProperty = "id", useGeneratedKeys = true)
+    int insertUser(User user);
 
 }

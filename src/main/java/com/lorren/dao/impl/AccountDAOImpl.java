@@ -14,7 +14,7 @@ public class AccountDAOImpl implements AccountDAO {
     @Resource(name = "accountMapper")
     private AccountMapper accountMapper;
     
-    public long insert(Account account) {
+    public int insert(Account account) {
         return accountMapper.insertAccount(account);
     }
 

@@ -1,18 +1,31 @@
 package com.lorren.entity;
 
+import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlRootElement(name = "user")
-public class User extends Base {
+public class User implements Serializable {
 
+    private static final long serialVersionUID = 8911644044381638640L;
+    
+    @XmlAttribute(name = "id")
+    protected Long id;
+    @XmlElement(name = "createtime")
+    protected Timestamp createtime;
+    @XmlElement(name = "updatetime")
+    protected Timestamp updatetime;
+    @XmlElement(name = "creator")
+    protected Long creator;
     @XmlElement(name = "name")
     private String name;
     @XmlElement(name = "email")
@@ -26,6 +39,30 @@ public class User extends Base {
     @XmlElementRef(type = Account.class, name = "accounts")
     private List<Account> accounts = new ArrayList<>();
     
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public Timestamp getCreatetime() {
+        return createtime;
+    }
+    public void setCreatetime(Timestamp createtime) {
+        this.createtime = createtime;
+    }
+    public Timestamp getUpdatetime() {
+        return updatetime;
+    }
+    public void setUpdatetime(Timestamp updatetime) {
+        this.updatetime = updatetime;
+    }
+    public Long getCreator() {
+        return creator;
+    }
+    public void setCreator(Long creator) {
+        this.creator = creator;
+    }
     public String getName() {
         return name;
     }

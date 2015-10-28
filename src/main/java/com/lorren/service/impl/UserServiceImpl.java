@@ -1,14 +1,12 @@
 package com.lorren.service.impl;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import com.lorren.dao.AccountDAO;
@@ -18,7 +16,6 @@ import com.lorren.entity.User;
 import com.lorren.service.UserService;
 import com.lorren.util.SecurityUtils;
 
-@Transactional
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
@@ -35,23 +32,19 @@ public class UserServiceImpl implements UserService {
         return null == id ? null : userDAO.getById(id);
     }
 
-    @Transactional(rollbackFor = Exception.class)
     public User createUser(User user) {
-        List<Account> accounts = user.getAccounts();
         user = resetUser(user);
-        long userID = userDAO.insert(user);
-        if (!CollectionUtils.isEmpty(accounts)) {
-            for (Account account : accounts) {
-                account = resetAccount(account, userID);
+        userDAO.insert(user);
+        if (!CollectionUtils.isEmpty(user.getAccounts())) {
+            for (Account account : user.getAccounts()) {
+                account = resetAccount(account, user.getId());
                 accountDAO.insert(account);
             }
         }
-        
-        return getUser(userID);
+        return user;
     }
     
     private User resetUser(User user) {
-        user.setAccounts(new ArrayList<Account>());
         long now = (new Date()).getTime();
         user.setCreatetime(new Timestamp(now));
         user.setUpdatetime(new Timestamp(now));

@@ -2,23 +2,24 @@ package com.lorren.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.CacheNamespace;
+import org.apache.ibatis.annotations.InsertProvider;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectProvider;
 
 import com.lorren.entity.Account;
+import com.lorren.mapper.sql.AccountSqlBuilder;
 
+@CacheNamespace(size = 512)
 public interface AccountMapper {
     
-    @Select("select * from app.tb_account where userid = #{userid}")
+    @SelectProvider(type = AccountSqlBuilder.class, method = "selectAllByUserID")
+    @Options(flushCache = true, timeout = 10000)
     List<Account> getAccountsByUserID(@Param("userid")Long userID);
     
-    @Insert({
-        "insert into app.tb_account( ",
-            "userid, username, password, token, enabled, createtime, updatetime, creator ",
-        ") values( ",
-            "#{userid}, #{username}, #{password}, #{token}, #{enabled}, #{createtime}, #{updatetime}, #{creator} ",
-        ")" })
-    long insertAccount(Account account);
+    @InsertProvider(type = AccountSqlBuilder.class, method = "insert")
+    @Options(flushCache = true, timeout = 20000, keyProperty = "id", useGeneratedKeys = true)
+    int insertAccount(Account account);
 
 }

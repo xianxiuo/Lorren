@@ -10,8 +10,8 @@ public interface UserDAO {
 
     User getById(Long id);
     
-    long insert(User user);
+    int insert(User user);
     
-    long update(User user);
+    int update(User user);
 
 }

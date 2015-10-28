@@ -1,14 +1,28 @@
 package com.lorren.entity;
 
+import java.io.Serializable;
+import java.sql.Timestamp;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlRootElement(name = "account")
-public class Account extends Base {
+public class Account implements Serializable {
 
+    private static final long serialVersionUID = -4892498096183992787L;
+    
+    @XmlAttribute(name = "id")
+    protected Long id;
+    @XmlElement(name = "createtime")
+    protected Timestamp createtime;
+    @XmlElement(name = "updatetime")
+    protected Timestamp updatetime;
+    @XmlElement(name = "creator")
+    protected Long creator;
     @XmlElement(name = "userid")
     private Long userid;
     @XmlElement(name = "username")
@@ -20,6 +34,30 @@ public class Account extends Base {
     @XmlElement(name = "enabled")
     private Boolean enabled;
     
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public Timestamp getCreatetime() {
+        return createtime;
+    }
+    public void setCreatetime(Timestamp createtime) {
+        this.createtime = createtime;
+    }
+    public Timestamp getUpdatetime() {
+        return updatetime;
+    }
+    public void setUpdatetime(Timestamp updatetime) {
+        this.updatetime = updatetime;
+    }
+    public Long getCreator() {
+        return creator;
+    }
+    public void setCreator(Long creator) {
+        this.creator = creator;
+    }
     public Long getUserid() {
         return userid;
     }

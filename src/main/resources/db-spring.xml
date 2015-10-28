@@ -18,7 +18,7 @@
         </property>
     </bean>
 
-    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close" abstract="false" scope="singleton" lazy-init="false">
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${db.driver}" />
         <property name="jdbcUrl" value="${db.url}" />
         <property name="user" value="${db.username}" />

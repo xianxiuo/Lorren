@@ -24,11 +24,11 @@ public class UserDAOImpl implements UserDAO {
         return userMapper.getUserAll();
      }
     
-    public long insert(User user) {
+    public int insert(User user) {
         return userMapper.insertUser(user);
     }
 
-    public long update(User user) {
+    public int update(User user) {
         // TODO Auto-generated method stub
         return 0;
     }
