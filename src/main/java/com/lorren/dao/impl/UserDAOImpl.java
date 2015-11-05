@@ -29,8 +29,11 @@ public class UserDAOImpl implements UserDAO {
     }
 
     public int update(User user) {
-        // TODO Auto-generated method stub
         return 0;
+    }
+    
+    public List<User> getUsersByCondition() {
+        return userMapper.getUsersByCondition();
     }
 
 }

@@ -13,5 +13,7 @@ public interface UserDAO {
     int insert(User user);
     
     int update(User user);
+    
+    List<User> getUsersByCondition();
 
 }

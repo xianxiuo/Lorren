@@ -44,6 +44,10 @@ public class UserServiceImpl implements UserService {
         return user;
     }
     
+    public List<User> getUsersByCondition() {
+        return userDAO.getUsersByCondition();
+    }
+    
     private User resetUser(User user) {
         long now = (new Date()).getTime();
         user.setCreatetime(new Timestamp(now));

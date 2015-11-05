@@ -2,26 +2,28 @@ package com.lorren.mapper.sql;
 
 import org.apache.ibatis.jdbc.SqlBuilder;
 
+import com.lorren.util.ConstantValue;
+
 public class UserSqlBuilder {
     
     public String selectAll() {
         SqlBuilder.BEGIN();
         SqlBuilder.SELECT("id, name, email, address, phone, enabled, createtime, updatetime, creator");
-        SqlBuilder.FROM("tb_user");
+        SqlBuilder.FROM(ConstantValue.TABLE_USER);
         return SqlBuilder.SQL();
     }
     
     public String selectOneByID() {
         SqlBuilder.BEGIN();
         SqlBuilder.SELECT("id, name, email, address, phone, enabled, createtime, updatetime, creator");
-        SqlBuilder.FROM("tb_user");
+        SqlBuilder.FROM(ConstantValue.TABLE_USER);
         SqlBuilder.WHERE("id = #{id}");
         return SqlBuilder.SQL();
     }
     
     public String insert() {
         SqlBuilder.BEGIN();
-        SqlBuilder.INSERT_INTO("tb_user");
+        SqlBuilder.INSERT_INTO(ConstantValue.TABLE_USER);
         SqlBuilder.VALUES("name", "#{name, javaType=String, jdbcType=VARCHAR}");
         SqlBuilder.VALUES("email", "#{email, javaType=String, jdbcType=VARCHAR}");
         SqlBuilder.VALUES("address", "#{address, javaType=String, jdbcType=VARCHAR}");

@@ -10,6 +10,7 @@
     <security:http auto-config="true">
         <security:intercept-url pattern="/rs/**" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')" requires-channel="https" />
         <security:csrf disabled="false" request-matcher-ref="lorren-csrf"/>
+        <security:http-basic /> 
     </security:http>
 
     <security:authentication-manager alias="authenticationManager">

@@ -129,6 +129,10 @@ insert into app.users(username, password, enabled) values('lorren', 'f64ea6bc04f
 insert into app.authorities(username, authority) values('lorren', 'ROLE_USER');
 insert into app.authorities(username, authority) values('lorren', 'ROLE_ADMIN');
 
+insert into app.users(username, password, enabled) values('lorren2', 'f64ea6bc04fe2f90ce611ced3772f034', false);
+insert into app.authorities(username, authority) values('lorren2', 'ROLE_USER');
+insert into app.authorities(username, authority) values('lorren2', 'ROLE_ADMIN');
+
 insert into app.tb_user(id, name, email, address, phone, enabled, createtime, updatetime) values(-1, 'Lorren Wang', 'lorren@lorren.com', 'lorren address', '18600000000', true, current_timestamp, current_timestamp);
 insert into app.tb_user(id, name, email, address, phone, enabled, createtime, updatetime) values(-2, 'Sorimo Chen', 'sorimo@lorren.com', 'sorimo address', '18600000000', true, current_timestamp, current_timestamp);
 insert into app.tb_user(id, name, email, address, phone, enabled, createtime, updatetime) values(-3, 'Sara Du', 'sara@lorren.com', 'sara address', '18600000000', true, current_timestamp, current_timestamp);
