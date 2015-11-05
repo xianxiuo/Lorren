@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   
+                           http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+                           http://www.springframework.org/schema/security   
+                           http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+
+    <security:http auto-config="true">
+        <security:intercept-url pattern="/rs/**" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')" requires-channel="https" />
+        <security:csrf disabled="false" request-matcher-ref="lorren-csrf"/>
+    </security:http>
+
+    <security:authentication-manager alias="authenticationManager">
+        <security:authentication-provider>
+            <security:password-encoder hash="md5">
+                <security:salt-source user-property="username" />
+            </security:password-encoder>
+            <security:jdbc-user-service data-source-ref="dataSource" />
+        </security:authentication-provider>
+    </security:authentication-manager>
+    
+    <bean id="lorren-csrf" class="com.lorren.security.CsrfSecurityRequestMatcher">
+        <property name="execludeURLs">
+            <list>
+                <value>/rs/</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>  

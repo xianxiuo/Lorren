@@ -3,6 +3,7 @@ package com.lorren.rest;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -65,6 +66,7 @@ public class UserRest {
     }
     
     @POST
+    @RolesAllowed({"ROLE_ADMIN"})
     @Path(ConstantPath.USERS_CREATE_XML)
     @Consumes(MediaType.APPLICATION_XML)
     @Produces(MediaType.APPLICATION_XML)

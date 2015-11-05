@@ -15,6 +15,10 @@ public class SecurityUtils {
     public static String generateToken() {
         return Token.generateToken();
     }
+    
+    public static void main(String[] args) {
+        System.out.println(MD5.encodePassword("lorrenpassword"));
+    }
 }
 
 class Token {
@@ -26,7 +30,8 @@ class Token {
 
 class MD5 {
     private static Md5PasswordEncoder md5 = new Md5PasswordEncoder();
-    private static final String MD5_SALT = "AbCdEfChIjKlMnOpQrStUvWxYz1234567890s-=`[]';.,";
+//    private static final String MD5_SALT = "AbCdEfGhIjKlMnOpQrStUvWxYz-=.,;'[]`";
+    private static final String MD5_SALT = "lorren";
     
     public static String encodePassword(String rawPass) {
         return md5.encodePassword(rawPass, MD5_SALT);

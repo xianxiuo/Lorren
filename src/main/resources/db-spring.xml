@@ -21,8 +21,8 @@
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="${db.driver}" />
         <property name="jdbcUrl" value="${db.url}" />
-        <property name="user" value="${db.username}" />
-        <property name="password" value="${db.password}"/>
+<!--         <property name="user" value="${db.username}" /> -->
+<!--         <property name="password" value="${db.password}"/> -->
         <property name="checkoutTimeout" value="30000" />
         <property name="maxIdleTime" value="120" />
         <property name="maxPoolSize" value="10" />
@@ -34,7 +34,7 @@
     </bean>
     
     <jdbc:initialize-database data-source="dataSource" ignore-failures="DROPS" enabled="${db.initializedatabase}">  
-        <jdbc:script encoding="utf-8" location="/WEB-INF/classes/${db.initializedatabase.name}"/>
+        <jdbc:script encoding="utf-8" location="/WEB-INF/classes/${db.lorren.initializedatabase.name}"/>
     </jdbc:initialize-database>
 
 </beans>
