@@ -3,35 +3,18 @@ package com.lorren.entity;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlAccessorType(XmlAccessType.NONE)
-@XmlRootElement(name = "account")
 public class Account implements Serializable {
 
     private static final long serialVersionUID = -4892498096183992787L;
     
-    @XmlAttribute(name = "id")
     protected Long id;
-    @XmlElement(name = "createtime")
     protected Timestamp createtime;
-    @XmlElement(name = "updatetime")
     protected Timestamp updatetime;
-    @XmlElement(name = "creator")
     protected Long creator;
-    @XmlElement(name = "userid")
     private Long userid;
-    @XmlElement(name = "username")
     private String username;
-    @XmlElement(name = "password")
     private String password;
-    @XmlElement(name = "token")
     private String token;
-    @XmlElement(name = "enabled")
     private Boolean enabled;
     
     public Long getId() {

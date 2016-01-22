@@ -1,7 +1,5 @@
 package com.lorren.service.impl;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.junit.Assert;
@@ -11,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.lorren.entity.User;
 import com.lorren.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)  
@@ -23,6 +20,7 @@ public class UserServiceImplTest {
     
     @Before
     public void before() {
+        
     }
 
     @Test
@@ -45,8 +43,8 @@ public class UserServiceImplTest {
 
     @Test
     public void testFindAll() {
-        List<User> users = userService.getAllUsers();
-        System.out.println(users);
+//        List<User> users = userService.getAllUsers();
+//        System.out.println(users);
         Assert.assertTrue(true);
     }
 

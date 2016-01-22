@@ -5,38 +5,19 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementRef;
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlAccessorType(XmlAccessType.NONE)
-@XmlRootElement(name = "user")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 8911644044381638640L;
     
-    @XmlAttribute(name = "id")
     protected Long id;
-    @XmlElement(name = "createtime")
     protected Timestamp createtime;
-    @XmlElement(name = "updatetime")
     protected Timestamp updatetime;
-    @XmlElement(name = "creator")
     protected Long creator;
-    @XmlElement(name = "name")
     private String name;
-    @XmlElement(name = "email")
     private String email;
-    @XmlElement(name = "address")
     private String address;
-    @XmlElement(name = "phone")
     private String phone;
-    @XmlElement(name = "enabled")
     private Boolean enabled;
-    @XmlElementRef(type = Account.class, name = "accounts")
     private List<Account> accounts = new ArrayList<>();
     
     public Long getId() {

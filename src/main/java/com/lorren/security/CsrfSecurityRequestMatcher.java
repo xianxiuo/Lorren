@@ -14,7 +14,6 @@ public class CsrfSecurityRequestMatcher implements RequestMatcher {
 
     private List<String> execludeURLs;
 
-    @Override
     public boolean matches(HttpServletRequest request) {
         if (!CollectionUtils.isEmpty(execludeURLs)) {
             String servletPath = request.getServletPath();
